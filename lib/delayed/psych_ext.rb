@@ -33,6 +33,8 @@ module Delayed
         case object.tag
         when /^!ruby\/object/
           result = super
+
+          binding.pry
           if defined?(ActiveRecord::Base) && result.is_a?(ActiveRecord::Base)
             klass = result.class
             id = result[klass.primary_key]
